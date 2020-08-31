@@ -1,4 +1,4 @@
-version: '3'
+version: '3.5'
 services: 
     db:
         container_name: my-mysql
@@ -26,7 +26,7 @@ services:
             context: .
             dockerfile: Dockerfile-python-flask
         volumes: 
-            - flask-vol:/app
+            - ./app:/app
         ports:
             - "5000:5000"
         networks: 
@@ -35,16 +35,16 @@ services:
 
     frontend:
         container_name: frontend
-        image: app-react
+        image: node:12-alpine
         depends_on:
             - backend
-        build:
-            context: .
-            dockerfile: Dockerfile-nodejs-react
         volumes: 
-            - react-vol:/app
+            - ./fron-app:/app
+        working_dir: /app
         ports:
             - '3000:3000'
+        command: npm start
+        tty: true
         networks: 
             - my-net
         
@@ -52,9 +52,6 @@ networks:
     my-net:
 volumes: 
     mysql-vol:
-    flask-vol:
-    react-vol:
-    react-components:
     
 
         

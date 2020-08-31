@@ -1,15 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/fron-app/node_modules
-/fron-app/.pnp
+/node_modules
+/.pnp
 .pnp.js
 
 # testing
-/fron-app/coverage
+/coverage
 
 # production
-/fron-app/build
+/build
 
 # misc
 .DS_Store
